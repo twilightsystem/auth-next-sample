@@ -1,4 +1,6 @@
 import express from 'express'
+import helmet from 'helmet'
+import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import jwt from 'express-jwt'
 import jsonwebtoken from 'jsonwebtoken'
@@ -9,6 +11,9 @@ const app = express()
 // Install middleware
 app.use(cookieParser())
 app.use(express.json())
+
+app.use(helmet())
+app.use(cors())
 
 // JWT middleware
 app.use(
@@ -115,6 +120,7 @@ app.post('/refresh', (req, res) => {
 
 // [GET] /user
 app.get('/user', (req, res) => {
+  console.log(req.user)
   res.json({ user: req.user })
 })
 
