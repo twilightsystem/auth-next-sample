@@ -55,7 +55,8 @@ export default {
 
   auth: {
     redirect: {
-      logout: '/signed-out',
+      login: '/login',
+      logout: '/logout',
       callback: false,
       home: '/home'
     },
@@ -77,12 +78,12 @@ export default {
         scheme: 'refresh',
         token: {
           property: 'token.accessToken',
-          maxAge: 15
+          maxAge: 30 * 60
         },
         refreshToken: {
           property: 'token.refreshToken',
           data: 'refreshToken',
-          maxAge: false
+          maxAge: 30 * 60
         }
       },
     }

@@ -30,7 +30,7 @@ app.post('/login', (req, res) => {
 
   const { username, password } = req.body
   const valid = username.length && password === '123'
-  const expiresIn = 15
+  const expiresIn = 30 * 60
   const refreshToken =
     Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1
     
@@ -79,7 +79,7 @@ app.post('/refresh', (req, res) => {
 
   if (refreshToken in refreshTokens) {
     const user = refreshTokens[refreshToken].user
-    const expiresIn = 15
+    const expiresIn = 30 * 60
     const newRefreshToken =
       Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1
     delete refreshTokens[refreshToken]
